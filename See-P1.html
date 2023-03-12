@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Upload Example</title>
+  </head>
+  <body>
+    <input type="file" id="image-input">
+    <img id="image-preview" style="max-width: 100%; max-height: 300px;">
+    <script>
+      const imageInput = document.getElementById('image-input');
+      const imagePreview = document.getElementById('image-preview');
+      
+      imageInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          imagePreview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    </script>
+  </body>
+</html>
